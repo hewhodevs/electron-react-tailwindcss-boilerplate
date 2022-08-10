@@ -17,11 +17,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"npm run start-react\" \"npm run start-electron\"",
+    "start-react": "cross-env BROWSER=none react-scripts start",
+    "start-electron": "wait-on http-get://127.0.0.1:3000 && electron .",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "start-electron": "electron ."
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
